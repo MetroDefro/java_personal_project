@@ -46,8 +46,16 @@ public class App {
 
             System.out.println("결과: " + result);
 
-            // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
-            results[index++] = result; // result를 저장하고 index 증가
+            // 6. 연산 결과가 10개를 초과하는 경우 가장 먼저 저장된 결과를 삭제하고 새로운 연산 결과가 저장될 수 있도록 소스 코드를 수정합니다.
+            if(index >= 9) { // 인덱스가 9를 넘을 때만
+                for(int i = 0; i < results.length - 1; i++) { // 인덱스 0부터 8까지 순회하며
+                    results[i] = results[i + 1]; // 다음 인덱스의 값을 현재 인덱스 자리에 넣는다
+                }
+                results[index] = result; // 인덱스 9에 결과를 저장
+            } else { // 인덱스 9 미만의 경우
+                // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
+                results[index++] = result; // result를 저장하고 index 증가
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             isEnd = sc.next().equals("exit"); // 입력 받은 답변이 "exit"라면 isEnd는 true 아니면 false 유지
