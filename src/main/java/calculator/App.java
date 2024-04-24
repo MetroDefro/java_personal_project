@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
+        int[] results = new int[10]; // 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다.
+        int index = 0; // 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언
+
         // 1. Scanner를 사용하여 양의 정수 2개(0 포함)를 전달 받을 수 있습니다.
         Scanner sc = new Scanner(System.in); // 스캐너 생성
 
@@ -41,6 +45,10 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+
+            // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
+            results[index++] = result; // result를 저장하고 index 증가
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             isEnd = sc.next().equals("exit"); // 입력 받은 답변이 "exit"라면 isEnd는 true 아니면 false 유지
         } while (!isEnd);
