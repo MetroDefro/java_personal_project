@@ -1,12 +1,16 @@
 package calculator;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
-        int[] results = new int[10]; // 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다.
-        int index = 0; // 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언
+//        // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
+//        int[] results = new int[10]; // 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다.
+//        int index = 0; // 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언
+
+        // 7. 연산 결과가 10개로 고정되지 않고 무한이 저장될 수 있도록 소스 코드를 수정합니다.
+        LinkedList<Integer> results = new LinkedList<>(); // 연산 결과를 저장하기 적합한 컬렉션인 LinkedList 생성
 
         // 1. Scanner를 사용하여 양의 정수 2개(0 포함)를 전달 받을 수 있습니다.
         Scanner sc = new Scanner(System.in); // 스캐너 생성
@@ -46,15 +50,23 @@ public class App {
 
             System.out.println("결과: " + result);
 
-            // 6. 연산 결과가 10개를 초과하는 경우 가장 먼저 저장된 결과를 삭제하고 새로운 연산 결과가 저장될 수 있도록 소스 코드를 수정합니다.
-            if(index >= 9) { // 인덱스가 9를 넘을 때만
-                for(int i = 0; i < results.length - 1; i++) { // 인덱스 0부터 8까지 순회하며
-                    results[i] = results[i + 1]; // 다음 인덱스의 값을 현재 인덱스 자리에 넣는다
-                }
-                results[index] = result; // 인덱스 9에 결과를 저장
-            } else { // 인덱스 9 미만의 경우
-                // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
-                results[index++] = result; // result를 저장하고 index 증가
+//            // 6. 연산 결과가 10개를 초과하는 경우 가장 먼저 저장된 결과를 삭제하고 새로운 연산 결과가 저장될 수 있도록 소스 코드를 수정합니다.
+//            if(index >= 9) { // 인덱스가 9를 넘을 때만
+//                for(int i = 0; i < results.length - 1; i++) { // 인덱스 0부터 8까지 순회하며
+//                    results[i] = results[i + 1]; // 다음 인덱스의 값을 현재 인덱스 자리에 넣는다
+//                }
+//                results[index] = result; // 인덱스 9에 결과를 저장
+//            } else { // 인덱스 9 미만의 경우
+//                // 5. 연산 결과 10개를 저장할 수 있는 배열을 선언 및 생성하고 연산의 결과를 저장합니다.
+//                results[index++] = result; // result를 저장하고 index 증가
+//            }
+
+            // 7. 연산 결과가 10개로 고정되지 않고 무한이 저장될 수 있도록 소스 코드를 수정합니다.
+            results.add(result); // 리스트에 결과 추가
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            if(sc.next().equals("remove")) { // 입력 받은 답변이 "remove"일 경우
+                results.removeFirst(); // 첫 결과 삭제
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
