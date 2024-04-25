@@ -5,6 +5,7 @@ public class ArithmeticCalculator extends Calculator {
     private SubstractOperator substractOperator;
     private MultiplyOperator multiplyOperator;
     private DivideOperator divideOperator;
+    private ModOperator modOperator;
 
     public ArithmeticCalculator() {
         // 부모의 생성자는 자동으로 호출 된다.
@@ -12,6 +13,7 @@ public class ArithmeticCalculator extends Calculator {
         substractOperator = new SubstractOperator();
         multiplyOperator = new MultiplyOperator();
         divideOperator = new DivideOperator();
+        modOperator = new ModOperator();
     }
 
     // 사용할 오버라이딩 메서드는 public으로 변경
@@ -33,6 +35,9 @@ public class ArithmeticCalculator extends Calculator {
                     throw new InputErrorException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다."); // exception 만들어 던짐
                 else
                     result = divideOperator.operate(firstNumber, secondNumber);
+                break;
+            case '%': // 나머지 연산 수행하여 result에 저장
+                result = modOperator.operate(firstNumber, secondNumber);
                 break;
         }
 
