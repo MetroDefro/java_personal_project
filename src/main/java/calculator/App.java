@@ -24,16 +24,17 @@ public class App {
 
                 System.out.println("결과: " + result);
 
-                calculator.results.add(result); // 리스트에 결과 추가
+                // 3. App 클래스의 main 메서드에서 Calculator 클래스의 연산 결과를 저장하고 있는 컬렉션 필드에 직접 접근하지 못하도록 수정합니다. (캡슐화)
+                calculator.getResults().add(result); // 리스트에 결과 추가
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 if(sc.next().equals("remove")) { // 입력 받은 답변이 "remove"일 경우
-                    calculator.results.removeFirst(); // 첫 결과 삭제
+                    calculator.getResults().removeFirst(); // 첫 결과 삭제
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 if(sc.next().equals("inquiry")) { // 입력 받은 답변이 "inquiry"일 경우
-                    for(int element : calculator.results ) { // foreach 문 사용하여 results linkedlist 순회
+                    for(int element : calculator.getResults() ) { // foreach 문 사용하여 results linkedlist 순회
                         System.out.print(element + " "); // 출력하고 한 칸 띄기
                     }
                     System.out.println(); // 구분을 위한 한 줄 내리기
