@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        // 8. 사칙연산을 수행하는 계산기 ArithmeticCalculator 클래스와 원과 관련된 연산을 수행하는 계산기 CircleCalculator 클래스 2개를 구현합니다.
         // 사칙연산, 원 넓이 계산기 각각 생성
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();

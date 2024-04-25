@@ -2,7 +2,6 @@ package calculator;
 
 import java.util.LinkedList;
 
-// 8. 사칙연산을 수행하는 계산기 ArithmeticCalculator 클래스와 원과 관련된 연산을 수행하는 계산기 CircleCalculator 클래스 2개를 구현합니다.
 public abstract class Calculator {
     private LinkedList<Double> results; // 결과를 저장하는 컬렉션 타입의 필드 선언
 
