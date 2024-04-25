@@ -44,4 +44,13 @@ public class Calculator {
     public void removeResult() {
         results.removeFirst(); // 첫 결과 삭제
     }
+
+    // 5. Calculator 클래스에 저장된 연산 결과들을 조회하는 기능을 가진 메서드를 구현한 후
+    // App 클래스의 main 메서드에 조회 메서드가 활용될 수 있도록 수정합니다.
+    public void inquiryResults() {
+        for(int element : results ) { // foreach 문 사용하여 results linkedlist 순회
+            System.out.print(element + " "); // 출력하고 한 칸 띄기
+        }
+        System.out.println(); // 구분을 위한 한 줄 내리기
+    }
 }

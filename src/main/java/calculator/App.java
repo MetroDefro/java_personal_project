@@ -34,12 +34,11 @@ public class App {
                     calculator.removeResult(); // 첫 결과 삭제
                 }
 
+                // 5. Calculator 클래스에 저장된 연산 결과들을 조회하는 기능을 가진 메서드를 구현한 후
+                // App 클래스의 main 메서드에 조회 메서드가 활용될 수 있도록 수정합니다.
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 if(sc.next().equals("inquiry")) { // 입력 받은 답변이 "inquiry"일 경우
-                    for(int element : calculator.getResults() ) { // foreach 문 사용하여 results linkedlist 순회
-                        System.out.print(element + " "); // 출력하고 한 칸 띄기
-                    }
-                    System.out.println(); // 구분을 위한 한 줄 내리기
+                    calculator.inquiryResults(); // 결과 조회
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
