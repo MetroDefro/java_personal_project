@@ -1,6 +1,18 @@
 package calculator;
 
 public class ArithmeticCalculator extends Calculator {
+    private AddOperator addOperator; // 사칙연산 클래스 필드들 선언
+    private SubstractOperator substractOperator;
+    private MultiplyOperator multiplyOperator;
+    private DivideOperator divideOperator;
+
+    public ArithmeticCalculator() {
+        // 부모의 생성자는 자동으로 호출 된다.
+        addOperator = new AddOperator(); // 사칙연산 클래스 필드들 생성
+        substractOperator = new SubstractOperator();
+        multiplyOperator = new MultiplyOperator();
+        divideOperator = new DivideOperator();
+    }
 
     // 사용할 오버라이딩 메서드는 public으로 변경
     @Override
@@ -8,19 +20,19 @@ public class ArithmeticCalculator extends Calculator {
         double result = 0;
         switch (operator) { // operator 값에 따라 네 가지 case로 분류
             case '+': // 덧셈 연산 수행하여 result에 저장
-                result = firstNumber + secondNumber;
+                result = addOperator.operate(firstNumber, secondNumber); // 사칙연산 클래스로 책임을 분산하였다.
                 break;
             case '-': // 뺄셈 연산 수행하여 result에 저장
-                result = firstNumber - secondNumber;
+                result = substractOperator.operate(firstNumber, secondNumber);
                 break;
             case '*': // 곱샘 연산 수행하여 result에 저장
-                result = firstNumber * secondNumber;
+                result = multiplyOperator.operate(firstNumber, secondNumber);
                 break;
             case '/': // 나눗셈 연산 수행하여 result에 저장
                 if(secondNumber == 0) // 분모가 0일 경우 exception 발생!
                     throw new InputErrorException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다."); // exception 만들어 던짐
                 else
-                    result = firstNumber / secondNumber;
+                    result = divideOperator.operate(firstNumber, secondNumber);
                 break;
         }
 
