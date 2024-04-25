@@ -28,8 +28,10 @@ public class App {
                 calculator.getResults().add(result); // 리스트에 결과 추가
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+                // 4. Calculator 클래스에 저장된 연산 결과들 중
+                // 가장 먼저 저장된 데이터를 삭제하는 기능을 가진 메서드를 구현한 후 App 클래스의 main 메서드에 삭제 메서드가 활용될 수 있도록 수정합니다.
                 if(sc.next().equals("remove")) { // 입력 받은 답변이 "remove"일 경우
-                    calculator.getResults().removeFirst(); // 첫 결과 삭제
+                    calculator.removeResult(); // 첫 결과 삭제
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
