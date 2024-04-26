@@ -15,16 +15,36 @@ public class App {
             System.out.println("계산기 옵션(번호 입력): 1. 사칙연산, 2. 원의 너비 구하기"); // 사칙연산 원의 너비 중 선택하도록 제시
             switch (sc.nextInt()) { // 입력 받은 값에 따라 두 갈래로 나뉜다.
                 case 1: // 사칙 연산 로직
-                    System.out.print("첫 번째 숫자를 입력하세요: ");
-                    int firstNumber = sc.nextInt(); // int를 입력 받는다.
-                    System.out.print("두 번째 숫자를 입력하세요: ");
-                    int secondNumber = sc.nextInt(); // int를 입력 받는다.
-
-                    System.out.print("사칙연산 기호를 입력하세요: ");
-                    char operator = sc.next().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
-
                     try {
-                        double result = arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
+                        // double, int 중 선택하도록 제시
+                        System.out.print("계산 할 타입을 선택해주세요(번호 입력): 1. 정수, 2. 실수 ");
+                        int type = sc.nextInt(); // 무슨 타입인지 받는다
+                        double result = 0; // result를 if 문 밖으로 뺐다.
+                        if(type == 1) { // 정수 선택
+                            System.out.print("첫 번째 숫자를 입력하세요: ");
+                            int firstNumber = sc.nextInt(); // int를 입력 받는다.
+                            System.out.print("두 번째 숫자를 입력하세요: ");
+                            int secondNumber = sc.nextInt(); // int를 입력 받는다.
+
+                            System.out.print("사칙연산 기호를 입력하세요: ");
+                            char operator = sc.next().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
+
+                            result = arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
+                        }
+                        else if(type == 2) { // 실수 선택
+                            System.out.print("첫 번째 숫자를 입력하세요: ");
+                            double firstNumber = sc.nextDouble(); // double 입력 받는다.
+                            System.out.print("두 번째 숫자를 입력하세요: ");
+                            double secondNumber = sc.nextDouble(); // double 입력 받는다.
+
+                            System.out.print("사칙연산 기호를 입력하세요: ");
+                            char operator = sc.next().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
+
+                            result = arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
+                        } else { // 이상한 값이 들어왔을 경우
+                            System.out.println("잘못된 값이 입력되었습니다. 처음으로 돌아갑니다.");
+                            continue; // 반복문 처음부터 다시 시작
+                        }
 
                         System.out.println("결과: " + result);
 
@@ -60,6 +80,9 @@ public class App {
                     System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                     isEnd = sc.next().equals("exit"); // 입력 받은 답변이 "exit"라면 isEnd는 true 아니면 false 유지
                     break;
+                default: // 1, 2가 아닌 값이 들어왔을 경우
+                    System.out.println("잘못된 값이 입력되었습니다. 처음으로 돌아갑니다.");
+                    continue; // 반복문 처음부터 다시 시작
             }
         } while (!isEnd);
     }

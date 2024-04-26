@@ -18,7 +18,9 @@ public abstract class Calculator {
     }
 
     // calculate는 두 경우에 매개 변수를 다르게 받아야 해서 오버로딩 하였다.
-    protected abstract double calculate(int firstNumber, int secondNumber, char operator) throws InputErrorException;
+    // Integer, Double 모두 Number를 상속받기 때문에 Number와 그 자식 클래스로 한정지었다.
+    // 반환값은 Double로 저장하고 있기 때문에 전부 T가 아니라 double이다.
+    protected abstract <T extends Number> double calculate(T firstNumber, T secondNumber, char operator) throws InputErrorException;
     protected abstract double calculate(int number);
 
     public void removeResult() { // 첫 결과 삭제 메서드
