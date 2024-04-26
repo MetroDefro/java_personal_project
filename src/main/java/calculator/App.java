@@ -60,6 +60,10 @@ public class App {
                             arithmeticCalculator.inquiryResults(); // 결과 조회
                         }
 
+                        System.out.println("입력 값보다 더 큰 값을 조회하겠습니다. 기준 숫자를 입력하세요.");
+                        double standardNumber = sc.nextDouble();
+                        arithmeticCalculator.inquiryBigger(standardNumber); // 결과 조회
+
                         System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                         isEnd = sc.next().equals("exit"); // 입력 받은 답변이 "exit"라면 isEnd는 true 아니면 false 유지
 

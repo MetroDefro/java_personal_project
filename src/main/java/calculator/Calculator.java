@@ -3,7 +3,8 @@ package calculator;
 import java.util.LinkedList;
 
 public abstract class Calculator {
-    private LinkedList<Double> results; // 결과를 저장하는 컬렉션 타입의 필드 선언
+    // 자식 클래스에서도 접근 가능하도록 protected로 수정
+    protected LinkedList<Double> results; // 결과를 저장하는 컬렉션 타입의 필드 선언
 
     public Calculator() {
         results = new LinkedList<>(); // 생성자에서 컬렉션 필드를 초기화

@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.List;
+
 public class ArithmeticCalculator extends Calculator {
 
     // 사용할 오버라이딩 메서드는 public으로 변경
@@ -33,5 +35,15 @@ public class ArithmeticCalculator extends Calculator {
     @Override
     protected double calculate(int radius) {
         return 0;
+    }
+
+    // 3. 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과 값 들을 출력하고 싶습니다.
+    public void inquiryBigger(double number) {
+        // 람다, 스트림 적용.
+        List<Double> biggerResults = results.stream().filter(o -> o > number).toList(); // 필터로 더 큰 숫자들만 뽑아 list화
+        for(double element : biggerResults ) { // foreach 문 사용하여 results linkedlist 순회
+            System.out.print(element + " "); // 출력하고 한 칸 띄기
+        }
+        System.out.println(); // 구분을 위한 한 줄 내리기
     }
 }
