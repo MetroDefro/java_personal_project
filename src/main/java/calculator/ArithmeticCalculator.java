@@ -4,9 +4,6 @@ import java.util.List;
 
 public class ArithmeticCalculator extends Calculator {
 
-    // 사용할 오버라이딩 메서드는 public으로 변경
-    // 2. 지금까지는 ArithmeticCalculator, 즉 사칙연산 계산기는 양의 정수(0 포함)를 매개변수로 전달받아 연산을 수행했습니다.
-    @Override
     public <T extends Number> double calculate(T firstNumber, T secondNumber, char operator) throws InputErrorException {
         double result = 0;
         // 기존에는 switch 문을 사용했지만 상수값이 아니라 OperatorType.getSignal()로 char값을 얻어올 것이기 때문에
@@ -31,13 +28,6 @@ public class ArithmeticCalculator extends Calculator {
         return result;
     }
 
-    // 사용하지 않는 오버라이딩 메서드는 protected로 밖에서 접근 불가능하게 하였다
-    @Override
-    protected double calculate(int radius) {
-        return 0;
-    }
-
-    // 3. 저장된 연산 결과들 중 Scanner로 입력받은 값보다 큰 결과 값 들을 출력하고 싶습니다.
     public void inquiryBigger(double number) {
         // 람다, 스트림 적용.
         List<Double> biggerResults = results.stream().filter(o -> o > number).toList(); // 필터로 더 큰 숫자들만 뽑아 list화

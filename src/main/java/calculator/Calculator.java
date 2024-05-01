@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.LinkedList;
-import java.util.regex.Pattern;
 
 public abstract class Calculator {
     // 자식 클래스에서도 접근 가능하도록 protected로 수정
@@ -19,11 +18,7 @@ public abstract class Calculator {
         this.results = results;
     }
 
-    // calculate는 두 경우에 매개 변수를 다르게 받아야 해서 오버로딩 하였다.
-    // Integer, Double 모두 Number를 상속받기 때문에 Number와 그 자식 클래스로 한정지었다.
-    // 반환값은 Double로 저장하고 있기 때문에 전부 T가 아니라 double이다.
-    protected abstract <T extends Number> double calculate(T firstNumber, T secondNumber, char operator) throws InputErrorException;
-    protected abstract double calculate(int number);
+    // calculate는 추상 메서드 구현을 하지 않는 것으로 변경하였다. 매개변수가 달라서 어차피 오버로딩 하던 것이라 상속의 의미 없음.
 
     public void removeResult() { // 첫 결과 삭제 메서드
         results.removeFirst(); // 첫 결과 삭제
