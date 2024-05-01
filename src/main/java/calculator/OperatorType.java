@@ -3,28 +3,28 @@ package calculator;
 // 1. 현재 사칙연산 계산기는 +, -, *, /, % 이렇게 총 5가지 연산 타입으로 구성되어있습니다.
 public enum OperatorType { // 연산 타입을 나타내는 enum
     ADD('+') { // char와 매핑해 주고 확장 메서드를 사용합니다
-        public <T extends Number> double operate(T a, T b) {
-            return addOperator.operate(a, b); // 그대로 클래스의 operate를 호출합니다.
+        public <T extends Number> T operate(T a, T b) {
+            return (T)addOperator.operate(a, b); // 그대로 클래스의 operate를 호출합니다.
         }
     },
     SUB('-') {
-        public <T extends Number> double operate(T a, T b) {
-            return substractOperator.operate(a, b);
+        public <T extends Number> T operate(T a, T b) {
+            return (T)substractOperator.operate(a, b);
         }
     },
     MUL('*') {
-        public <T extends Number> double operate(T a, T b) {
-            return multiplyOperator.operate(a, b);
+        public <T extends Number> T operate(T a, T b) {
+            return (T)multiplyOperator.operate(a, b);
         }
     },
     DIV('/') {
-        public <T extends Number> double operate(T a, T b) {
-            return divideOperator.operate(a, b);
+        public <T extends Number> T operate(T a, T b) {
+            return (T)divideOperator.operate(a, b);
         }
     },
     MOD('%') {
-        public <T extends Number> double operate(T a, T b) {
-            return modOperator.operate(a, b);
+        public <T extends Number> T operate(T a, T b) {
+            return (T)modOperator.operate(a, b);
         }
     };
 
@@ -48,5 +48,5 @@ public enum OperatorType { // 연산 타입을 나타내는 enum
         return signal; // enum의 char 값을 얻기 위함
     }
 
-    public abstract <T extends Number> double operate(T a, T b); // 추상 클래스. 그대로 operator의 operate 메서드를 반환할 예정이라 똑같은 형태.
+    public abstract <T extends Number> T operate(T a, T b); // 추상 클래스. 그대로 operator의 operate 메서드를 반환할 예정이라 똑같은 형태.
 }

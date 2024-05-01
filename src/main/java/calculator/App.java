@@ -30,7 +30,7 @@ public class App {
                             System.out.print("사칙연산 기호를 입력하세요: ");
                             char operator = sc.nextLine().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
 
-                            result = arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
+                            result = (int)arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
                         } else if (type == 2) { // 실수 선택
                             System.out.print("첫 번째 숫자를 입력하세요: ");
                             double firstNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
@@ -40,7 +40,7 @@ public class App {
                             System.out.print("사칙연산 기호를 입력하세요: ");
                             char operator = sc.nextLine().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
 
-                            result = arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
+                            result = (double)arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
                         }
 
                         System.out.println("결과: " + result);
