@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         // 사칙연산, 원 넓이 계산기 각각 생성
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();
+        ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator();
 
         Scanner sc = new Scanner(System.in); // 스캐너 생성
 
@@ -14,35 +14,18 @@ public class App {
         do { // 첫번째는 무조건 실행.
             System.out.println("계산기 옵션(번호 입력): 1. 사칙연산, 2. 원의 너비 구하기"); // 사칙연산 원의 너비 중 선택하도록 제시
             try {
+                double result = 0;
                 switch (Calculator.parseInputToOption(sc.nextLine(), 2)) {
                     case 1: // 사칙 연산 로직
-                        // double, int 중 선택하도록 제시
-                        System.out.print("계산 할 타입을 선택해주세요(번호 입력): 1. 정수, 2. 실수 ");
-                        int type = Calculator.parseInputToOption(sc.nextLine(), 2); // 무슨 타입인지 받는다
-                        double result = 0; // result를 if 문 밖으로 뺐다.
+                        System.out.print("첫 번째 숫자를 입력하세요: ");
+                        double firstNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
+                        System.out.print("두 번째 숫자를 입력하세요: ");
+                        double secondNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
 
-                        if (type == 1) { // 정수 선택
-                            System.out.print("첫 번째 숫자를 입력하세요: ");
-                            int firstNumber = Calculator.parseInputToInt(sc.nextLine()); // int를 입력받아 파싱.
-                            System.out.print("두 번째 숫자를 입력하세요: ");
-                            int secondNumber = Calculator.parseInputToInt(sc.nextLine()); // int를 입력받아 파싱.
+                        System.out.print("사칙연산 기호를 입력하세요: ");
+                        char operator = sc.nextLine().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
 
-                            System.out.print("사칙연산 기호를 입력하세요: ");
-                            char operator = sc.nextLine().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
-
-                            result = (int)arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
-                        } else if (type == 2) { // 실수 선택
-                            System.out.print("첫 번째 숫자를 입력하세요: ");
-                            double firstNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
-                            System.out.print("두 번째 숫자를 입력하세요: ");
-                            double secondNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
-
-                            System.out.print("사칙연산 기호를 입력하세요: ");
-                            char operator = sc.nextLine().charAt(0); // 입력 받은 string의 인덱스 0번 char을 가져온다.
-
-                            result = (double)arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
-                        }
-
+                        result = arithmeticCalculator.calculate(firstNumber, secondNumber, operator);
                         System.out.println("결과: " + result);
 
                         arithmeticCalculator.getResults().add(result); // 리스트에 결과 추가

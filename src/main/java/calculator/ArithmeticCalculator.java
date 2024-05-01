@@ -4,24 +4,22 @@ import java.util.List;
 
 public class ArithmeticCalculator<T extends Number> extends Calculator {
 
-    public T calculate(T firstNumber, T secondNumber, char operator) throws InputErrorException {
-        T result = null;
-        switch (operator) {
-            case '+':
-                result = OperatorType.ADD.operate(firstNumber, secondNumber); // enum 값에서 operate 호출. 반환값은 result에 저장된다.
-            case '-':
-                result = OperatorType.SUB.operate(firstNumber, secondNumber); // enum 값에서 operate 호출. 반환값은 result에 저장된다.
-            case '*':
-                result = OperatorType.MUL.operate(firstNumber, secondNumber); // enum 값에서 operate 호출. 반환값은 result에 저장된다.
-            case '/':
-                if((int)secondNumber == 0) // 분모가 0일 경우 exception 발생!
-                    throw new InputErrorException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다."); // exception 만들어 던짐
-                else
-                    result = OperatorType.DIV.operate(firstNumber, secondNumber);
-            case '%':
-                result = OperatorType.MOD.operate(firstNumber, secondNumber); // enum 값에서 operate 호출. 반환값은 result에 저장된다.
-        }
-        return result;
+    // 계산을 진행할 메서드
+    public T calculate(T firstNumber, T secondNumber, char operator) {
+        // operatorFactory 메서드에서 받은 operator로 operator 호출하여 계산한다.
+        return operatorFactory(operator).operate(firstNumber, secondNumber);
+    }
+
+    // operator 기호로부터 해당하는 Operator를 리턴받기 위한 메서드
+    private Operator<T> operatorFactory(char operator) {
+        // 향상된 switch!
+        return switch (OperatorType.fromOperator(operator)) { // char 기호를 OperatorType으로 변환
+            case ADD -> new AddOperator(); // OperatorType에 따라 해당하는 Operator 리턴
+            case SUB -> new SubstractOperator();
+            case MUL -> new MultiplyOperator();
+            case DIV -> new DivideOperator();
+            case MOD -> new ModOperator();
+        };
     }
 
     public void inquiryBigger(double number) {
