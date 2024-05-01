@@ -10,7 +10,6 @@ public class App {
 
         Scanner sc = new Scanner(System.in); // 스캐너 생성
 
-        boolean isEnd = false; // 종료 할지 여부를 boolean에 저장하기 위해 변수 생성.
         do { // 첫번째는 무조건 실행.
             System.out.println("계산기 옵션(번호 입력): 1. 사칙연산, 2. 원의 너비 구하기"); // 사칙연산 원의 너비 중 선택하도록 제시
             try {
@@ -43,10 +42,6 @@ public class App {
                         System.out.println("입력 값보다 더 큰 값을 조회하겠습니다. 기준 숫자를 입력하세요.");
                         double standardNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
                         arithmeticCalculator.inquiryBigger(standardNumber); // 결과 조회
-
-                        System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-                        isEnd = sc.nextLine().equals("exit"); // 입력 받은 답변이 "exit"라면 isEnd는 true 아니면 false 유지
-
                         break;
                     case 2: // 원의 너비 구하기 로직
                         System.out.print("원의 반지름을 입력하세요: ");
@@ -58,13 +53,12 @@ public class App {
 
                         circleCalculator.getResults().add(result); // 컬렉션에 결과 저장
                         circleCalculator.inquiryResults(); // 원의 넓기 결과들 바로 전체 조회
-                        System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-                        isEnd = sc.nextLine().equals("exit"); // 입력 받은 답변이 "exit"라면 isEnd는 true 아니면 false 유지
                         break;
                 }
+                System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             } catch (InputErrorException e) {
                 System.out.println(e.getMessage());
             }
-        } while (!isEnd);
+        } while (!sc.nextLine().equals("exit"));// 입력 받은 답변이 "exit"가 아니면 루프
     }
 }
