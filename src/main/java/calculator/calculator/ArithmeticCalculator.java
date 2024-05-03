@@ -1,4 +1,7 @@
-package calculator;
+package calculator.calculator;
+
+import calculator.operator.OperatorFactory;
+import calculator.operator.OperatorType;
 
 import java.util.List;
 

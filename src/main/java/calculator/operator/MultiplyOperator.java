@@ -1,4 +1,6 @@
-package calculator;
+package calculator.operator;
+
+import calculator.NumberConversionUtils;
 
 public class MultiplyOperator <T extends Number> extends Operator<T>  {
     @Override

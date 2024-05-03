@@ -1,4 +1,6 @@
-package calculator;
+package calculator.calculator;
+
+import calculator.InputErrorException;
 
 import java.util.LinkedList;
 

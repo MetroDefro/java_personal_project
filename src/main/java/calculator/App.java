@@ -1,8 +1,17 @@
 package calculator;
 
+import calculator.calculator.ArithmeticCalculator;
+import calculator.calculator.Calculator;
+import calculator.calculator.CircleCalculator;
+
 import java.util.Scanner;
 
 public class App {
+
+    // 계산기 옵션 상수
+    private static final int OPTION_ARITHMETIC = 1;
+    private static final int OPTION_CIRCLE = 2;
+
     public static void main(String[] args) {
         // 사칙연산, 원 넓이 계산기 각각 생성
         CircleCalculator circleCalculator = new CircleCalculator();
@@ -15,7 +24,7 @@ public class App {
             try {
                 double result = 0;
                 switch (Calculator.parseInputToOption(sc.nextLine(), 2)) {
-                    case 1: // 사칙 연산 로직
+                    case OPTION_ARITHMETIC: // 사칙 연산 로직
                         System.out.print("첫 번째 숫자를 입력하세요: ");
                         double firstNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
                         System.out.print("두 번째 숫자를 입력하세요: ");
@@ -43,7 +52,7 @@ public class App {
                         double standardNumber = Calculator.parseInputToDouble(sc.nextLine()); // double 입력 받는다.
                         arithmeticCalculator.inquiryBigger(standardNumber); // 결과 조회
                         break;
-                    case 2: // 원의 너비 구하기 로직
+                    case OPTION_CIRCLE: // 원의 너비 구하기 로직
                         System.out.print("원의 반지름을 입력하세요: ");
                         int radius = Calculator.parseInputToInt(sc.nextLine()); // int를 입력 받는다.
 

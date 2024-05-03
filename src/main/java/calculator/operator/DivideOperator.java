@@ -1,4 +1,7 @@
-package calculator;
+package calculator.operator;
+
+import calculator.InputErrorException;
+import calculator.NumberConversionUtils;
 
 public class DivideOperator <T extends Number> extends Operator<T>  {
     @Override
@@ -9,6 +12,6 @@ public class DivideOperator <T extends Number> extends Operator<T>  {
         } catch (InputErrorException e) {
             throw new RuntimeException(e);
         }
-        return (T)NumberConversionUtils.convertNumberToType(firstNumber.doubleValue() / secondNumber.doubleValue(), firstNumber.getClass());
+        return (T) NumberConversionUtils.convertNumberToType(firstNumber.doubleValue() / secondNumber.doubleValue(), firstNumber.getClass());
     }
 }

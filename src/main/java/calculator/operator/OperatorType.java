@@ -1,4 +1,4 @@
-package calculator;
+package calculator.operator;
 
 // 1. 현재 사칙연산 계산기는 +, -, *, /, % 이렇게 총 5가지 연산 타입으로 구성되어있습니다.
 public enum OperatorType { // 연산 타입을 나타내는 enum

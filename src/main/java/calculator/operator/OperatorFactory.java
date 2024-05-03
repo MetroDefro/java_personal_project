@@ -1,4 +1,4 @@
-package calculator;
+package calculator.operator;
 
 // 오퍼레이터들을 생성하는 클래스
 public class OperatorFactory <T extends Number> {
